@@ -17,7 +17,7 @@ namespace TestObjectRefChain
             // value of this Node
             public object data;
 
-            private List<int> filler = Enumerable.Range(0,int.MaxValue/1000000).ToList();
+            private List<int> filler = Enumerable.Range(0, int.MaxValue / 1000000).ToList();
         }
 
         private Node root = null;
@@ -87,17 +87,33 @@ namespace TestObjectRefChain
             return linkedList;
         }
 
-        static void CheckForLoops(LinkedList linkedList)
+        static List<LinkedList.Node> CheckForLoopsWithList(LinkedList linkedList)
         {
             var curr = linkedList.First;
-            HashSet<LinkedList.Node> hashCodes = new HashSet<LinkedList.Node>();
-            while (Next(curr, linkedList.First) != null)
+            List<LinkedList.Node> hashCodes = new List<LinkedList.Node>();
+            while (Next(curr) != null)
             {
                 hashCodes.Add(curr);
                 if (hashCodes.Contains(curr.next))
                     Console.WriteLine($"{curr.data.ToString()}: {curr.next.data.ToString()} --- We've seen this before!! {curr.GetHashCode()} {curr.next.GetHashCode()}");
-                curr = Next(curr, linkedList.First);
+                curr = Next(curr);
             }
+            return hashCodes;
+        }
+
+        static HashSet<LinkedList.Node> CheckForLoops(LinkedList linkedList)
+        {
+            var curr = linkedList.First;
+            HashSet<LinkedList.Node> hashCodes = new HashSet<LinkedList.Node>();
+            while (Next(curr) != null)
+            {
+                hashCodes.Add(curr);
+                if (hashCodes.Contains(curr.next))
+                    Console.WriteLine($"{curr.data.ToString()}: {curr.next.data.ToString()} --- We've seen this before!! {curr.GetHashCode()} {curr.next.GetHashCode()}");
+                curr = Next(curr);
+            }
+
+            return hashCodes;
         }
 
 
@@ -111,16 +127,21 @@ namespace TestObjectRefChain
             TimeSpan middle = midpoint - start;
             Console.WriteLine($"Finished list creation at {middle.TotalMinutes.ToString()}");
 
-            CheckForLoops(linkedList);
+            var coll1 = CheckForLoops(linkedList);
 
-            TimeSpan end = DateTime.Now - midpoint;
+
+            TimeSpan middle2 = DateTime.Now - midpoint;
+            DateTime midpoint2 = DateTime.Now;
+            Console.WriteLine($"Finished loop check at {middle2.TotalMinutes.ToString()}");
+
+            var coll2 = CheckForLoopsWithList(linkedList);
+            TimeSpan end = DateTime.Now - midpoint2;
             Console.WriteLine($"Finished loop check at {end.TotalMinutes.ToString()}");
             Console.ReadLine();
         }
 
-        public static LinkedList.Node Next(LinkedList.Node node, LinkedList.Node root)
+        public static LinkedList.Node Next(LinkedList.Node curr)
         {
-            LinkedList.Node curr = node;
             return (curr.alt_next == null) ?
                     curr.next : curr.alt_next;
 

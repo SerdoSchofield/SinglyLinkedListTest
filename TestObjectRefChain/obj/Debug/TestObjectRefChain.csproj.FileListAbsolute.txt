@@ -1,7 +1,0 @@
-Z:\Users\Serdo\Documents\Visual Studio 2017\Projects\New folder\TestObjectRefChain\TestObjectRefChain\bin\Debug\TestObjectRefChain.exe.config
-Z:\Users\Serdo\Documents\Visual Studio 2017\Projects\New folder\TestObjectRefChain\TestObjectRefChain\bin\Debug\TestObjectRefChain.exe
-Z:\Users\Serdo\Documents\Visual Studio 2017\Projects\New folder\TestObjectRefChain\TestObjectRefChain\bin\Debug\TestObjectRefChain.pdb
-Z:\Users\Serdo\Documents\Visual Studio 2017\Projects\New folder\TestObjectRefChain\TestObjectRefChain\obj\Debug\TestObjectRefChain.csprojResolveAssemblyReference.cache
-Z:\Users\Serdo\Documents\Visual Studio 2017\Projects\New folder\TestObjectRefChain\TestObjectRefChain\obj\Debug\TestObjectRefChain.csproj.CoreCompileInputs.cache
-Z:\Users\Serdo\Documents\Visual Studio 2017\Projects\New folder\TestObjectRefChain\TestObjectRefChain\obj\Debug\TestObjectRefChain.exe
-Z:\Users\Serdo\Documents\Visual Studio 2017\Projects\New folder\TestObjectRefChain\TestObjectRefChain\obj\Debug\TestObjectRefChain.pdb
